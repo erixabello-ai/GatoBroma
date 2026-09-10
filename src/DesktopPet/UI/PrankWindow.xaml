@@ -1,0 +1,39 @@
+<Window x:Class="DesktopPet.UI.PrankWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gato Broma"
+        Width="430" Height="410"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="True">
+    <Grid Margin="28">
+        <StackPanel>
+            <TextBlock Text="🐱 GATO BROMA" FontSize="25" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,8"/>
+            <TextBlock Text="¿Cuándo quieres que aparezca?"
+                       FontSize="13" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <ComboBox x:Name="TimeBox" FontSize="13" Height="34">
+                <ComboBoxItem Content="5 segundos" Tag="5"/>
+                <ComboBoxItem Content="1 minuto" Tag="60"/>
+                <ComboBoxItem Content="5 minutos" Tag="300"/>
+                <ComboBoxItem Content="15 minutos" Tag="900"/>
+                <ComboBoxItem Content="30 minutos" Tag="1800"/>
+                <ComboBoxItem Content="Primer click 🖱️" Tag="first"/>
+            </ComboBox>
+
+            <TextBlock Text="Mensaje del error:" FontSize="12" Margin="0,18,0,5"/>
+            <TextBox x:Name="MessageBox" Height="58" FontSize="13" TextWrapping="Wrap"
+                     AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                     Text="Tu nivel de estupidez es muy alto."/>
+
+            <Button Content="PROGRAMAR" Height="42" Margin="0,18,0,8"
+                    FontSize="13" FontWeight="Bold" Click="Programar_Click"/>
+            <Button Content="Cancelar" Height="32" FontSize="11" Click="Cancelar_Click"/>
+
+            <TextBlock Text="Al programar, esta ventana desaparecerá."
+                       Foreground="Gray" FontSize="10" HorizontalAlignment="Center"
+                       Margin="0,16,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
