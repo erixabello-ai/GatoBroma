@@ -1,0 +1,29 @@
+name: Crear GatoBroma.exe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Publicar EXE Windows x64 autocontenido
+        run: dotnet publish src/DesktopPet/DesktopPet.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:EnableCompressionInSingleFile=true -o publish
+
+      - name: Preparar entrega
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path entrega | Out-Null
+          Copy-Item publish/GatoBroma.exe entrega/GatoBroma.exe
+          Compress-Archive -Path entrega/GatoBroma.exe -DestinationPath GatoBroma-Windows-x64.zip -Force
+
+      - name: Subir GatoBroma.exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: GatoBroma-Windows-x64
+          path: GatoBroma-Windows-x64.zip
+          if-no-files-found: error
