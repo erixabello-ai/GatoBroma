@@ -10,7 +10,7 @@ using DesktopPet.UI;
 
 namespace DesktopPet;
 
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     private Mutex? _singleInstance;
     private PrankWindow? _setup;
