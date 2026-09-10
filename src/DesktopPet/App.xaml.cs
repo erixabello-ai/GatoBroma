@@ -105,7 +105,7 @@ public partial class App : System.Windows.Application
         {
             ActivePet = "cat",
             Speed = 1.0,
-            SizeScale = 1.45,
+            SizeScale = 4.0,
             EnableWindowWalking = true,
             EnableCursorChase = false,
             EnableSleep = false,
